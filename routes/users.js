@@ -5,7 +5,7 @@ const plm =require("passport-local-mongoose");
 // BYftq4T3bzyS663N
 
 
-const uri= "mongodb+srv://subhajitlaiofficial:BYftq4T3bzyS663N@digimon.y6inopi.mongodb.net/?retryWrites=true&w=majority&appName=digimon"
+const uri= "mongodb+srv://subhajitlaiofficial:sJZpUL0YI4aGRE88@digimon.aatfs0o.mongodb.net/?retryWrites=true&w=majority&appName=digimon"
 mongoose.connect(uri);
 
 const userData=mongoose.Schema({
