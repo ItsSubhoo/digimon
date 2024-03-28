@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/x-icon" href="/images/logo/D.png">
+  <title>Digimon</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    html {
+      scrollbar-face-color: rgb(255, 255, 255);
+      color: rgb(255, 255, 255);
+      scrollbar-base-color: rgb(255, 255, 255);
+      scrollbar-3dlight-color: rgb(255, 255, 255);
+      scrollbar-highlight-color: rgb(255, 255, 255);
+      scrollbar-track-color: #000;
+      scrollbar-arrow-color: #000;
+      scrollbar-shadow-color: rgb(255, 255, 255);
+      scrollbar-dark-shadow-color: rgb(255, 255, 255);
+    }
+
+    @media  (max-width: 743px){
+     
+
+     #navmenuitm{
+
+       display: none;
+     }
+     
+   }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 3px;
+    }
+
+    ::-webkit-scrollbar-button {
+      background-color: #666
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: rgb(255, 255, 255);
+    }
+
+    ::-webkit-scrollbar-track-piece {
+      background-color: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      height: 50px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-corner {
+      background-color: rgb(255, 255, 255);
+    }
+
+    ::-webkit-resizer {
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+<body>
+    <div class="main overflow-x-hidden bg-zinc-900 min-h-screen max-w-screen">
+       
+        <!-- For nav bar -->
+        <div class="navbar flex justify-between px-5 md:px-10 pt-1 md:pt-5 ">
+          <a href="/feed">
+          <img class="aspect-auto w-48 "  src="/images/logo/dlogo.png" alt="Digimon"></a>
+
+          <div class="flex gap-12  text-xl md:hidden text-red-700  font-bold items-center" id="menuitm"  class="menu">
+            <a class="opacity-80 hover:opacity-100"
+            href="/profile">Profile</a>
+
+          </div>
+          <div class="flex gap-12 text-white text-xl   font-semibold items-center" id="navmenuitm"  class="menu">
+            <a class="opacity-80 hover:opacity-100"
+              href="/feed">Feed</a><a class="opacity-80 hover:opacity-100" href="/profile">Profile</a><a class="opacity-80 hover:opacity-100 hover:text-red-700" href="/logout">Logout</a>
+          </div>
+        </div>
+        <!-- End of nav bar -->
+<div class="posts m-3 transition-all ease-in-out delay-250  flex flex-wrap flex-col gap-12 items-center justify-center">
+<!-- 
+    <div class="post rounded-md bg-zinc-950 ">
+      <div class="profileinfo m-5 flex items-center flex gap-3 text-white"> 
+        
+        <div class="profileimg mt-2 w-10  h-10 rounded-full overflow-hidden   bg-zinc-800">
+
+            <img class="scale-125" src="https://images.pexels.com/photos/18751048/pexels-photo-18751048/free-photo-of-the-end.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+
+          </div>
+          <h2 class="text-xl">@SUbhajit
+          </h2>
+      </div>
+          <div class="img mt-4 w-full">
+                  <img src="https://images.pexels.com/photos/18751048/pexels-photo-18751048/free-photo-of-the-end.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+          </div>
+          <div class="icon m-5  text-white w-auto ">
+            <i class="ri-heart-3-fill text-3xl hover:text-red-700"></i> <i class="ri-chat-1-line ml-3 text-3xl h-5 w-5 hover:text-red-700"></i>
+
+          </div>
+          <div class="caption text-2xl text-white m-5 mb-10">
+            This is a caption and Life is too shortto blend in
+          </div>
+     
+    </div> -->
+
+    <% if(posts.length>0){
+
+        posts.forEach(function(e){  %>
+           
+            <div class="post  w-full md:w-1/2  rounded-md bg-zinc-950 ">
+                <div class="profileinfo m-5 flex items-center flex gap-3 text-white"> 
+                  
+                  <div class="profileimg mt-2 w-10  h-10 rounded-full overflow-hidden   bg-zinc-800">
+          
+                      <img class="scale-125 " src="/images/uploades/<%=e.user.profileImage%>">
+          
+                    </div>
+                    <h2 class="text-xl">@<%=e.user.username%></h2>
+                    </h2>
+                </div>
+                    <div class="img  max-h-1/2 mt-4 ">
+                            <img class=" w-full object-cover " src="/images/uploades/<%=e.image%>" alt="">
+                    </div>
+                    <div class="icon m-5  text-white w-auto ">
+                      <i class="ri-heart-3-fill text-3xl hover:text-red-700"></i> <i class="ri-chat-1-line ml-3 text-3xl h-5 w-5 hover:text-red-700"></i>
+          
+                    </div>
+                    <div class="caption text-2xl text-white m-5 mb-10">
+                     <%=e.caption%>
+                    </div>
+               
+              </div>
+            <%
+
+
+        })
+    }
+            %>
+   
+
+    </div>
+
+</body>
+</html>

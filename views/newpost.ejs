@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/x-icon" href="/images/logo/D.png">
+  <title>Digimon</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    @media  (max-width: 743px){
+   
+
+   #navmenuitm{
+
+     display: none;
+   }
+   
+ }
+</style>
+</head>
+
+<body>
+
+  
+  <div class=" background bg-[url('https://images.pexels.com/photos/18751048/pexels-photo-18751048/free-photo-of-the-end.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] static bg-zinc-800  flex-col flex items-center justify-center h-screen w-screen">
+  <!-- For nav bar -->
+  <div class="navbar flex w-full md:w-screen justify-between px-5 md:px-10 pt-1 md:pt-5 ">
+    <a href="/feed">
+    <img class="aspect-auto w-48 "  src="/images/logo/dlogo.png" alt="Digimon"></a>
+
+    <div class="flex gap-12  text-xl md:hidden text-red-700  font-bold items-center" id="menuitm"  class="menu">
+      <a class="opacity-80 hover:opacity-100"
+      href="/feed">Feed</a>
+
+    </div>
+    <div class="flex gap-12 text-white text-xl   font-semibold items-center" id="navmenuitm"  class="menu">
+      <a class="opacity-80 hover:opacity-100"
+        href="/feed">Feed</a><a class=" hover:opacity-100" href="/profile">Profile</a><a class=" hover:opacity-100 hover:text-red-700" href="/logout">Logout</a>
+    </div>
+  </div>
+  <!-- End of nav bar -->
+    <div class="newpost backdrop-blur-2xl drop-shadow-2xl p-1 md:p-10 flex flex-col md:flex-row gap-5  bg-black/60 rounded-lg md:w-9/12 w-screen h-3/4 text-white">
+
+      <div class="p-3 md:p-10 left  rounded-l-lg rounded-r-md w-full h-full bg-zinc-800  ">
+        <h3 class="font-bold text-2xl">Create a new post</h3>
+        <form class="mt-3 " method="post" enctype="multipart/form-data" action="/createpost">
+         
+          <input name="caption" class=" block w-full h-10 rounded-md bg-zinc-700 text-white mt-3 font-semibold pl-2 text-xl" id="Title" class="" placeholder="Add a caption..." type="text" >
+          <input type="file" id="fileInput" name="postimg" hidden  accept="image/png, image/jpeg">
+          <button type="submit" hidden id="submitbtn"></button>
+        </form>
+        <div id="preview"  class="  mt-3 h-1/2 w-full bg-black/10 rounded-md" >
+          <img id="previewimg" style="display: none;" class="object-cover h-48 w-96" src="" alt="Image Preview">
+        </div>
+
+
+     <div id="uploadicn" class="absolute cursor-pointer scale-150 md:bottom-20 bottom-60 ml-10">
+      Upload your file here
+        <i id="" class="ri-folder-upload-fill scale-150"></i>
+      </div>
+      </div>
+      <div class="right relative p-10  rounded-r-lg rounded-l-md bg-zinc-800 md:w-1/2 w-full ">
+        <h3 class="font-bold text-2xl">Posting as</h3>
+        <div class="flex mt-3 flex-row items-center gap-x-3">
+
+
+          <div class="profileimg w-10  h-10 rounded-full overflow-hidden   bg-zinc-800">
+
+            <img class="scale-125" src="/images/uploades/<%=user.profileImage%>">
+
+          </div>
+          <h2 class="text-xl">@<%=user.username%>
+          </h2>
+ 
+          <button id="postbtn" class="absolute bottom-10 right-10 bg-red-700 px-10 py-3 rounded-full font-bold">
+            Post
+          </button>
+
+
+        </div>
+        
+      </div>
+     
+
+    </div>
+
+
+  </div>
+
+
+
+</body>
+
+<script>
+ 
+  
+  uploadicn.addEventListener("click",()=>{
+
+    fileInput.click();
+
+  })
+
+  fileInput.addEventListener("change", function(e){
+    previewimg.style.display="block";
+    var file=e.target.files[0];
+    console.log(file);
+    var render= new FileReader();
+    render.onload=(e)=>{
+      previewimg.src=e.target.result;
+    }
+    render.readAsDataURL(file);
+  });
+  postbtn.addEventListener("click",()=>{
+
+    submitbtn.click();
+  })
+
+
+</script>
+
+</html>
