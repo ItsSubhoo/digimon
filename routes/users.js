@@ -1,12 +1,15 @@
-const mongoose=require("mongoose");
-const plm =require("passport-local-mongoose");
+const mongoose = require("mongoose");
+const plm = require("passport-local-mongoose");
 
+const uri = process.env.MONGODB_URI;
 
-// BYftq4T3bzyS663N
+if (!uri) {
+  throw new Error("MONGODB_URI is required to start the application");
+}
 
-
-const uri= "mongodb+srv://subhajitlai:eDgqscVY2XR7P5RJ@bloggify.5k9txlb.mongodb.net/digimon"
-mongoose.connect(uri);
+mongoose.connect(uri).catch((error) => {
+  console.error("[v0] MongoDB connection failed:", error.message);
+});
 
 const userData=mongoose.Schema({
   username:String,
