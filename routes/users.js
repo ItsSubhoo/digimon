@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const plm = require("passport-local-mongoose");
 
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_CONNECTION_STRING || process.env.MONGODB_URI;
 
 if (!uri) {
-  throw new Error("MONGODB_URI is required to start the application");
+  throw new Error("MONGODB_CONNECTION_STRING is required to start the application");
 }
 
 mongoose.connect(uri).catch((error) => {
